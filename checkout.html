@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Amazon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="nav-logo border" id="logoBtn"><div class="logo"></div></div>
+            <div class="nav-signin border" id="signinBtn">
+                <p><span>Hello, sign in</span></p>
+                <p class="nav-second">Account &amp; Lists</p>
+            </div>
+            <div class="nav-cart border" id="cartBtn">
+                <div class="cart-icon-wrap">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <span class="cart-label">Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main checkout-page">
+        <h1 class="page-title">Checkout</h1>
+
+        <div class="checkout-layout" id="checkoutContent">
+            <form class="checkout-form" id="checkoutForm">
+                <section class="checkout-section">
+                    <h2>1. Delivery Address</h2>
+                    <label>Full Name<input type="text" id="fullName" required></label>
+                    <label>Phone<input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile"></label>
+                    <label>Address<textarea id="address" required rows="3"></textarea></label>
+                    <label>City<input type="text" id="city" required></label>
+                    <label>Pincode<input type="text" id="pincode" required pattern="[0-9]{6}" placeholder="6-digit pincode"></label>
+                </section>
+
+                <section class="checkout-section">
+                    <h2>2. Payment Method</h2>
+                    <label class="radio-label"><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+                    <label class="radio-label"><input type="radio" name="payment" value="card"> Credit / Debit Card</label>
+                    <label class="radio-label"><input type="radio" name="payment" value="upi"> UPI</label>
+                </section>
+
+                <button type="submit" class="btn-place-order">Place your order</button>
+            </form>
+
+            <aside class="checkout-summary">
+                <h2>Order Summary</h2>
+                <div id="orderItems"></div>
+                <hr>
+                <p class="order-total">Order Total: <strong id="orderTotal">₹0</strong></p>
+            </aside>
+        </div>
+
+        <div class="order-success" id="orderSuccess" style="display:none;">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for shopping with Amazon. Your order ID is <strong id="orderId"></strong></p>
+            <a href="index.html" class="btn-primary">Continue Shopping</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="foot-panel4">
+            <div class="copyright">&copy; 1996-2023, Amazon.com, Inc. or its affiliates</div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

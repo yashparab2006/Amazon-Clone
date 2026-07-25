@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Amazon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-header">
+        <a href="index.html"><div class="logo auth-logo"></div></a>
+    </div>
+
+    <main class="auth-main">
+        <div class="auth-box">
+            <h1>Sign in</h1>
+            <form id="loginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+                <button type="submit" class="btn-auth">Sign in</button>
+            </form>
+            <p class="auth-error" id="loginError"></p>
+            <hr>
+            <p class="auth-switch">New to Amazon? <a href="register.html">Create your Amazon account</a></p>
+        </div>
+    </main>
+
+    <footer class="auth-footer">
+        <a href="#">Conditions of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Help</a>
+        <p>&copy; 1996-2023, Amazon.com, Inc. or its affiliates</p>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

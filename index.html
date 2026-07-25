@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="amazon_logo.png">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-user"></i>
+            <span id="sidebarUser">Hello, sign in</span>
+        </div>
+        <nav class="sidebar-nav">
+            <h3>Shop by Category</h3>
+            <a href="index.html?category=Electronics" class="sidebar-link" data-category="Electronics">Electronics</a>
+            <a href="index.html?category=Clothes" class="sidebar-link" data-category="Clothes">Clothes</a>
+            <a href="index.html?category=Furniture" class="sidebar-link" data-category="Furniture">Furniture</a>
+            <a href="index.html?category=Health & Personal Care" class="sidebar-link" data-category="Health & Personal Care">Health & Personal Care</a>
+            <a href="index.html?category=Beauty Picks" class="sidebar-link" data-category="Beauty Picks">Beauty Picks</a>
+            <a href="index.html?category=Pet Care" class="sidebar-link" data-category="Pet Care">Pet Care</a>
+            <a href="index.html?category=New Arrival in Toys" class="sidebar-link" data-category="New Arrival in Toys">Toys</a>
+            <a href="index.html?category=Discover Fashion Trends" class="sidebar-link" data-category="Discover Fashion Trends">Fashion</a>
+            <hr>
+            <h3>Help & Settings</h3>
+            <a href="login.html" class="sidebar-link sidebar-link-signin">Sign in</a>
+            <a href="cart.html" class="sidebar-link">Your Cart</a>
+        </nav>
+    </aside>
+
+    <header>
+        <div class="navbar">
+            <div class="nav-logo border" id="logoBtn" title="Amazon Home">
+                <div class="logo"></div>
+            </div>
+            <div class="nav-address border" id="locationBtn">
+                <p class="add-first">Deliver to</p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-sec">India</p>
+                </div>
+            </div>
+            <div class="nav-search" id="searchBar">
+                <select class="search-select" id="searchCategory"></select>
+                <input type="text" placeholder="Search Amazon" class="search-input" id="searchInput" autocomplete="off">
+                <button type="button" class="search-icon" id="searchBtn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <div class="nav-signin border" id="signinBtn">
+                <p><span>Hello, sign in</span></p>
+                <p class="nav-second">Account &amp; Lists</p>
+            </div>
+            <div class="nav-return border" id="ordersBtn">
+                <p><span>Returns</span></p>
+                <p class="nav-second">&amp; Orders</p>
+            </div>
+            <div class="nav-cart border" id="cartBtn">
+                <div class="cart-icon-wrap">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <span class="cart-label">Cart</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-all border" id="panelAll">
+                <i class="fa-solid fa-bars"></i> All
+            </div>
+            <div class="panel-ops">
+                <p class="panel-link" data-filter="deals">Today's Deals</p>
+                <p class="panel-link">Customer Service</p>
+                <p class="panel-link">Registry</p>
+                <p class="panel-link">Gift Cards</p>
+                <p class="panel-link">Sell</p>
+            </div>
+            <div class="panel-deals panel-link" data-filter="Electronics">Shop deals in Electronics</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="heroSection">
+            <div class="hero-msg">
+                <p>You are on amazon.com. You can also shop on Amazon India for millions of products with faster local delivery. <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer">Click here to go to amazon.in</a></p>
+            </div>
+        </section>
+
+        <section class="shop-section" id="shopSection"></section>
+        <p class="no-results" id="noResults">No products found. Try a different search.</p>
+    </main>
+
+    <footer>
+        <div class="foot-panel1" id="backToTop">Back to Top</div>
+        <div class="foot-panel2">
+            <ul>
+                <li class="foot-heading">Get to Know Us</li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">About Amazon</a></li>
+            </ul>
+            <ul>
+                <li class="foot-heading">Make Money with Us</li>
+                <li><a href="#">Sell on Amazon</a></li>
+                <li><a href="#">Become an Affiliate</a></li>
+            </ul>
+            <ul>
+                <li class="foot-heading">Payment Products</li>
+                <li><a href="#">Amazon Pay</a></li>
+                <li><a href="#">Shop with Points</a></li>
+            </ul>
+            <ul>
+                <li class="foot-heading">Let Us Help You</li>
+                <li><a href="login.html">Your Account</a></li>
+                <li><a href="cart.html">Your Orders</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+        <div class="foot-panel3"><div class="logo"></div></div>
+        <div class="foot-panel4">
+            <div class="pages">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+            </div>
+            <div class="copyright">&copy; 1996-2023, Amazon.com, Inc. or its affiliates</div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
