@@ -1,11 +1,21 @@
 const AmazonStore = {
     getCart() {
-        return JSON.parse(localStorage.getItem("amazonCart")) || [];
+        try {
+            return JSON.parse(localStorage.getItem("amazonCart")) || [];
+        } catch (e) {
+            console.error("Error parsing cart data:", e);
+            return [];
+        }
     },
 
     saveCart(cart) {
-        localStorage.setItem("amazonCart", JSON.stringify(cart));
-        this.updateCartBadge();
+        try {
+            localStorage.setItem("amazonCart", JSON.stringify(cart));
+            this.updateCartBadge();
+        } catch (e) {
+            console.error("Error saving cart data:", e);
+            showToast("Error saving cart. Please try again.");
+        }
     },
 
     getCartCount() {
@@ -18,21 +28,27 @@ const AmazonStore = {
 
     addToCart(productId, qty = 1) {
         const product = getProductById(productId);
-        if (!product) return false;
+        if (!product) {
+            showToast("Product not found");
+            return false;
+        }
 
         const cart = this.getCart();
         const existing = cart.find((item) => item.id === product.id);
 
         if (existing) {
             existing.qty += qty;
+            showToast(`Updated quantity: ${product.name} (x${existing.qty})`);
         } else {
             cart.push({
                 id: product.id,
                 name: product.name,
                 price: product.price,
+                originalPrice: product.originalPrice,
                 image: product.image,
                 qty
             });
+            showToast(`${product.name} added to cart`);
         }
 
         this.saveCart(cart);
@@ -56,33 +72,54 @@ const AmazonStore = {
     removeFromCart(productId) {
         const cart = this.getCart().filter((i) => i.id !== Number(productId));
         this.saveCart(cart);
+        showToast("Item removed from cart");
     },
 
     clearCart() {
         localStorage.removeItem("amazonCart");
         this.updateCartBadge();
+        showToast("Cart cleared");
     },
 
     getUser() {
-        return JSON.parse(localStorage.getItem("amazonUser")) || null;
+        try {
+            return JSON.parse(localStorage.getItem("amazonUser")) || null;
+        } catch (e) {
+            console.error("Error parsing user data:", e);
+            return null;
+        }
     },
 
     setUser(user) {
-        localStorage.setItem("amazonUser", JSON.stringify(user));
-        this.updateUserUI();
+        try {
+            localStorage.setItem("amazonUser", JSON.stringify(user));
+            this.updateUserUI();
+        } catch (e) {
+            console.error("Error saving user data:", e);
+        }
     },
 
     logout() {
         localStorage.removeItem("amazonUser");
         this.updateUserUI();
+        showToast("Signed out successfully");
     },
 
     getUsers() {
-        return JSON.parse(localStorage.getItem("amazonUsers")) || [];
+        try {
+            return JSON.parse(localStorage.getItem("amazonUsers")) || [];
+        } catch (e) {
+            console.error("Error parsing users data:", e);
+            return [];
+        }
     },
 
     saveUsers(users) {
-        localStorage.setItem("amazonUsers", JSON.stringify(users));
+        try {
+            localStorage.setItem("amazonUsers", JSON.stringify(users));
+        } catch (e) {
+            console.error("Error saving users data:", e);
+        }
     },
 
     registerUser({ name, email, password }) {
@@ -90,7 +127,12 @@ const AmazonStore = {
         if (users.some((u) => u.email === email)) {
             return { success: false, message: "Email already registered." };
         }
-        users.push({ name, email, password });
+        users.push({
+            name,
+            email,
+            password,
+            createdAt: new Date().toISOString()
+        });
         this.saveUsers(users);
         return { success: true };
     },
@@ -116,9 +158,34 @@ const AmazonStore = {
         if (el) el.textContent = city;
     },
 
+    getOrders() {
+        try {
+            return JSON.parse(localStorage.getItem("amazonOrders")) || [];
+        } catch (e) {
+            console.error("Error parsing orders data:", e);
+            return [];
+        }
+    },
+
+    saveOrder(order) {
+        try {
+            const orders = this.getOrders();
+            orders.push(order);
+            localStorage.setItem("amazonOrders", JSON.stringify(orders));
+            return true;
+        } catch (e) {
+            console.error("Error saving order:", e);
+            return false;
+        }
+    },
+
     updateCartBadge() {
         const badge = document.getElementById("cartCount");
-        if (badge) badge.textContent = this.getCartCount();
+        if (badge) {
+            const count = this.getCartCount();
+            badge.textContent = count;
+            badge.style.display = count > 0 ? "flex" : "none";
+        }
     },
 
     updateUserUI() {
@@ -128,6 +195,12 @@ const AmazonStore = {
         const sidebarUser = document.getElementById("sidebarUser");
         if (signinSpan) signinSpan.textContent = greeting;
         if (sidebarUser) sidebarUser.textContent = greeting;
+
+        // Update dropdown arrow icon visibility
+        const dropdownIcon = document.querySelector(".nav-signin .fa-caret-down");
+        if (dropdownIcon) {
+            dropdownIcon.style.display = user ? "inline" : "inline";
+        }
     },
 
     initNavbar() {
@@ -157,7 +230,6 @@ const AmazonStore = {
                 if (AmazonStore.getUser()) {
                     if (confirm("Do you want to sign out?")) {
                         AmazonStore.logout();
-                        showToast("Signed out successfully");
                     }
                 } else {
                     window.location.href = "login.html";
@@ -179,7 +251,12 @@ const AmazonStore = {
         const ordersBtn = document.getElementById("ordersBtn");
         if (ordersBtn) {
             ordersBtn.addEventListener("click", () => {
-                window.location.href = "cart.html";
+                if (AmazonStore.getUser()) {
+                    // Navigate to orders page (to be implemented)
+                    showToast("Orders feature coming soon!");
+                } else {
+                    window.location.href = "login.html?redirect=orders.html";
+                }
             });
         }
 
@@ -263,12 +340,24 @@ function createProductCard(product) {
     box.dataset.category = product.category;
     if (product.deals) box.dataset.deals = "true";
 
+    const discount = calculateDiscount(product.originalPrice, product.price);
+    const discountHTML = discount > 0
+        ? `<span class="discount-badge">${discount}% off</span>`
+        : "";
+    const originalPriceHTML = discount > 0
+        ? `<span class="original-price">${formatPrice(product.originalPrice)}</span>`
+        : "";
+
     box.innerHTML = `
         <div class="box-content">
             <h2>${product.name}</h2>
             <div class="box-img" style="background-image: url('${product.image}');"></div>
-            <p class="product-price">${formatPrice(product.price)}</p>
-            <p class="product-rating">${renderStars(product.rating)} <span>(${product.reviews})</span></p>
+            <div class="product-price-section">
+                <p class="product-price">${formatPrice(product.price)}</p>
+                ${originalPriceHTML}
+                ${discountHTML}
+            </div>
+            <p class="product-rating"><span class="stars">${renderStars(product.rating)}</span> <span>(${formatNumber(product.reviews)})</span></p>
             <p class="see-more">See more</p>
             <button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
         </div>
@@ -282,7 +371,6 @@ function createProductCard(product) {
     box.querySelector(".add-to-cart-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         AmazonStore.addToCart(product.id);
-        showToast(`${product.name} added to cart`);
     });
 
     return box;

@@ -27,12 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cart.forEach((item) => {
             const row = document.createElement("div");
-            row.className = "cart-item";
+            row.className = "cart-item fade-in";
+
+            const discount = calculateDiscount(item.originalPrice, item.price);
+            const originalPriceHTML = discount > 0
+                ? `<span class="cart-original-price">${formatPrice(item.originalPrice)}</span>`
+                : "";
+
             row.innerHTML = `
                 <a href="product-detail.html?id=${item.id}" class="cart-item-img" style="background-image:url('${item.image}');"></a>
                 <div class="cart-item-info">
                     <a href="product-detail.html?id=${item.id}" class="cart-item-name">${item.name}</a>
-                    <p class="cart-item-price">${formatPrice(item.price)}</p>
+                    <div class="cart-item-price-section">
+                        <p class="cart-item-price">${formatPrice(item.price)}</p>
+                        ${originalPriceHTML}
+                    </div>
                     <div class="cart-item-actions">
                         <label>Qty:
                             <select class="qty-select" data-id="${item.id}">
@@ -42,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </select>
                         </label>
                         <button class="cart-remove" data-id="${item.id}">Delete</button>
+                        <button class="cart-save" data-id="${item.id}">Save for later</button>
                     </div>
                 </div>
                 <p class="cart-item-total">${formatPrice(item.price * item.qty)}</p>
@@ -51,8 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const totalItems = AmazonStore.getCartCount();
         const totalPrice = AmazonStore.getCartTotal();
-        cartSubtotal.innerHTML = `Subtotal (${totalItems} items): <strong>${formatPrice(totalPrice)}</strong>`;
+        cartSubtotal.innerHTML = `Subtotal (${totalItems} item${totalItems !== 1 ? 's' : ''}): <strong>${formatPrice(totalPrice)}</strong>`;
 
+        // Quantity change handlers
         document.querySelectorAll(".qty-select").forEach((sel) => {
             sel.addEventListener("change", () => {
                 AmazonStore.updateCartQty(sel.dataset.id, Number(sel.value));
@@ -60,11 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        // Remove item handlers
         document.querySelectorAll(".cart-remove").forEach((btn) => {
             btn.addEventListener("click", () => {
                 AmazonStore.removeFromCart(btn.dataset.id);
-                showToast("Item removed from cart");
                 renderCart();
+            });
+        });
+
+        // Save for later handlers (placeholder)
+        document.querySelectorAll(".cart-save").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                showToast("Save for later feature coming soon!");
             });
         });
     }
@@ -78,7 +96,16 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "login.html?redirect=checkout.html";
             return;
         }
-        window.location.href = "checkout.html";
+
+        // Add loading state
+        checkoutBtn.classList.add("btn-loading");
+        checkoutBtn.textContent = "Processing...";
+
+        setTimeout(() => {
+            checkoutBtn.classList.remove("btn-loading");
+            checkoutBtn.textContent = "Proceed to Checkout";
+            window.location.href = "checkout.html";
+        }, 500);
     });
 
     renderCart();
