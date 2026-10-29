@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon Gift Cards' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Amazon Gift Cards &amp; Balance Reload</h1>
+            <p>The perfect gift for any occasion. Delivered instantly via email or shipped in a festive gift box with free delivery.</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3>eGift Card</h3>
+                <p>Delivered to recipient's email in 5 minutes with a custom message and photo or animated design.</p>
+                <div class="amount-chips">
+                    <span class="amount-chip active">₹500</span>
+                    <span class="amount-chip">₹1,000</span>
+                    <span class="amount-chip">₹2,000</span>
+                    <span class="amount-chip">₹5,000</span>
+                </div>
+                <button class="btn-primary" onclick="alert('eGift Card added to cart! Proceeding to checkout.')" style="width:100%;">
+                    Buy eGift Card
+                </button>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-box-tissue"></i></div>
+                <h3>Physical Gift Card in a Box</h3>
+                <p>A classic plastic card delivered in a premium Amazon gift box or greeting card envelope.</p>
+                <div class="amount-chips">
+                    <span class="amount-chip">₹1,000</span>
+                    <span class="amount-chip active">₹2,500</span>
+                    <span class="amount-chip">₹5,000</span>
+                    <span class="amount-chip">₹10,000</span>
+                </div>
+                <button class="btn-primary" onclick="alert('Physical Gift Box added to cart!')" style="width:100%;">
+                    Order Gift Box
+                </button>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-wallet"></i></div>
+                <h3>Reload Your Balance</h3>
+                <p>Top up your Amazon Pay balance directly using UPI, NetBanking, Debit, or Credit card with instant cashback.</p>
+                <div class="amount-chips">
+                    <span class="amount-chip">₹250</span>
+                    <span class="amount-chip">₹500</span>
+                    <span class="amount-chip active">₹1,000</span>
+                    <span class="amount-chip">₹3,000</span>
+                </div>
+                <button class="btn-primary" onclick="alert('Amazon Pay balance reloaded successfully!')" style="width:100%;">
+                    Reload Balance
+                </button>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Redeem an Amazon Gift Card</h2>
+            <p>Have a claim code? Enter it below to add the amount to your Amazon Pay balance immediately.</p>
+            <div style="max-width:500px; margin-top:15px; display:flex; gap:10px;">
+                <input type="text" id="giftCodeInput" placeholder="Enter 16-digit claim code (e.g. ABCD-1234-EFGH)"
+                       style="flex:1; padding:10px 14px; border:1px solid #888c8c; border-radius:4px; font-size:0.95rem;">
+                <button class="btn-primary" onclick="redeemCode()" style="margin:0;">Apply to Balance</button>
+            </div>
+            <p id="redeemMsg" style="margin-top:10px; font-size:0.9rem; font-weight:600;"></p>
+        </section>
+
+        <section class="feature-section">
+            <h2>Gift Card Benefits</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-infinity"></i></div>
+                    <h4>Never Expires</h4>
+                    <p>Amazon gift cards and balances have no expiration date or hidden fees.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-bolt"></i></div>
+                    <h4>Instant Delivery</h4>
+                    <p>Send gifts in seconds to any email address or schedule delivery for later.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h4>Millions of Items</h4>
+                    <p>Redeemable on electronics, clothes, books, groceries, and digital services.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+    <script>
+        function redeemCode() {
+            const input = document.getElementById('giftCodeInput');
+            const msg = document.getElementById('redeemMsg');
+            if (!input.value.trim()) {
+                msg.textContent = 'Please enter a valid gift card claim code.';
+                msg.style.color = '#c40000';
+                return;
+            }
+            msg.textContent = '₹1,000 has been credited to your Amazon Pay Balance!';
+            msg.style.color = '#007600';
+            input.value = '';
+        }
+
+        document.querySelectorAll('.amount-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.parentElement.querySelectorAll('.amount-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+

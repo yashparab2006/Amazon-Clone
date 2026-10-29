@@ -1,0 +1,25 @@
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <i class="fa-solid fa-user"></i>
+        <span id="sidebarUser"><%= user ? 'Hello, ' + user.name : 'Hello, sign in' %></span>
+    </div>
+    <nav class="sidebar-nav">
+        <h3>Shop by Category</h3>
+        <% categories.filter(c => c !== 'All').forEach(function(cat) { %>
+            <a href="/?category=<%= encodeURIComponent(cat) %>" class="sidebar-link" data-category="<%= cat %>">
+                <%= cat %>
+            </a>
+        <% }); %>
+        <hr>
+        <h3>Help &amp; Settings</h3>
+        <% if (user) { %>
+            <a href="/auth/logout" class="sidebar-link sidebar-link-signin">Sign out</a>
+        <% } else { %>
+            <a href="/login" class="sidebar-link sidebar-link-signin">Sign in</a>
+        <% } %>
+        <a href="/cart" class="sidebar-link">Your Cart</a>
+    </nav>
+</aside>
+

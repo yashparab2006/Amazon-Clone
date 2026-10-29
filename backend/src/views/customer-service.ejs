@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Customer Service' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Hello. What can we help you with?</h1>
+            <p>Track packages, manage orders, view account settings, or contact customer support.</p>
+            <div class="feature-search">
+                <input type="text" placeholder="Type a question, topic, or order number...">
+                <button type="button"><i class="fa-solid fa-magnifying-glass"></i> Search Help</button>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <a href="/cart" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3>Your Orders</h3>
+                <p>Track packages, edit or cancel orders, and check delivery status.</p>
+                <span class="card-link">View orders &rarr;</span>
+            </a>
+
+            <a href="/cart" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                <h3>Returns &amp; Refunds</h3>
+                <p>Return or exchange items, print return labels, and view refund status.</p>
+                <span class="card-link">Start a return &rarr;</span>
+            </a>
+
+            <a href="/checkout" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-credit-card"></i></div>
+                <h3>Payment Settings</h3>
+                <p>Manage payment methods, view transactions, and update Amazon Pay balance.</p>
+                <span class="card-link">Manage payments &rarr;</span>
+            </a>
+
+            <a href="/login" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h3>Account Settings</h3>
+                <p>Change your name, email, password, delivery addresses, and security options.</p>
+                <span class="card-link">Edit profile &rarr;</span>
+            </a>
+
+            <div class="feature-card" onclick="alert('Digital Services support available 24/7.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Digital Services &amp; Devices</h3>
+                <p>Get assistance with Amazon Echo, Kindle, Prime Video, and Alexa settings.</p>
+                <span class="card-link">Device support &rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="alert('Your connection and transactions are encrypted with 256-bit SSL.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Security &amp; Privacy</h3>
+                <p>Report suspicious emails, unauthorized purchases, and review privacy notices.</p>
+                <span class="card-link">Security center &rarr;</span>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h4>Where is my order?</h4>
+                    <p>Go to <strong>Your Orders</strong> to view current progress, carrier tracking number, and estimated arrival date.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is the return policy?</h4>
+                    <p>Most items fulfilled by Amazon can be returned within 30 days of receipt in original condition for a full refund.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I cancel an order?</h4>
+                    <p>Visit Your Orders before shipment and select <strong>Cancel items</strong>. If already shipped, you can refuse delivery or initiate a return.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do refunds work?</h4>
+                    <p>Refunds are credited to your original payment method or Amazon Pay balance within 3 to 5 business days after inspection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Need More Help?</h2>
+            <p>Our dedicated customer support team is available 24/7 to assist you.</p>
+            <div class="contact-box">
+                <div class="contact-btn" onclick="alert('Live Chat window opening... Customer support agent connected.')">
+                    <i class="fa-solid fa-comments"></i>
+                    <div>
+                        <strong>Start a Chat</strong>
+                        <p style="font-size:0.85rem; color:#565959; margin:0;">Chat live with an Amazon support associate</p>
+                    </div>
+                </div>
+                <div class="contact-btn" onclick="alert('Request received! An Amazon associate will call your registered number in ~2 minutes.')">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <div>
+                        <strong>Call Me Now</strong>
+                        <p style="font-size:0.85rem; color:#565959; margin:0;">Instant callback to your phone number</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

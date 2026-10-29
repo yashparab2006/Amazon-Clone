@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Shopping Cart' }) %>
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <main class="page-main cart-page">
+        <h1 class="page-title">Shopping Cart</h1>
+
+        <% if (locals.success) { %>
+            <p style="color:green; padding:8px 16px;"><%= success %></p>
+        <% } %>
+
+        <div class="cart-layout" id="cartLayout">
+            <!-- Cart items rendered by client JS from localStorage -->
+            <div class="cart-items" id="cartItems">
+                <!-- Filled by cart.js -->
+            </div>
+
+            <aside class="cart-summary">
+                <p id="cartSubtotal">Subtotal (0 items): <strong>₹0</strong></p>
+                <button class="btn-checkout" id="checkoutBtn" onclick="window.location.href='/checkout'">
+                    Proceed to Checkout
+                </button>
+                <a href="/" class="continue-shopping">Continue Shopping</a>
+            </aside>
+        </div>
+
+        <div class="empty-cart" id="emptyCart" style="display:none;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h2>Your Amazon Cart is empty</h2>
+            <p>Shop today's deals and add items to your cart.</p>
+            <a href="/" class="btn-primary">Shop Now</a>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+    <script src="/js/cart.js"></script>
+</body>
+</html>
+

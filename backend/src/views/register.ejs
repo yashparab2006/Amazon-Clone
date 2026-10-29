@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Register' }) %>
+</head>
+<body class="auth-body">
+
+    <div class="auth-header">
+        <a href="/"><div class="logo auth-logo"></div></a>
+    </div>
+
+    <main class="auth-main">
+        <div class="auth-box">
+            <h1>Create account</h1>
+
+            <% if (locals.error) { %>
+                <p class="auth-error"><%= error %></p>
+            <% } %>
+
+            <form id="registerForm" action="/auth/register" method="POST">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" required placeholder="First and last name"
+                       value="<%= locals.formData ? formData.name : '' %>">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email"
+                       value="<%= locals.formData ? formData.email : '' %>">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6"
+                       placeholder="At least 6 characters">
+
+                <label for="confirmPassword">Re-enter password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required
+                       placeholder="Re-enter password">
+
+                <button type="submit" class="btn-auth">Create your Amazon account</button>
+            </form>
+            <hr>
+            <p class="auth-switch">Already have an account? <a href="/login">Sign in</a></p>
+        </div>
+    </main>
+
+    <footer class="auth-footer">
+        <a href="#">Conditions of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Help</a>
+        <p>&copy; 1996-2023, Amazon.com, Inc. or its affiliates</p>
+    </footer>
+
+</body>
+</html>
+

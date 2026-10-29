@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon Pay' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero" style="background: linear-gradient(135deg, #002f36 0%, #131921 100%);">
+            <h1><i class="fa-brands fa-amazon-pay"></i> Amazon Pay</h1>
+            <p>One-click payments, instant bill recharges, Scan &amp; Pay at local stores, and rewards on every transaction.</p>
+            <div style="background:rgba(255,255,255,0.15); display:inline-block; padding:12px 24px; border-radius:8px; margin-top:10px;">
+                <span style="font-size:0.9rem; color:#eee;">Your Amazon Pay Balance</span>
+                <h2 style="font-size:2rem; margin:4px 0; color:#ffd814;">₹2,450.00</h2>
+                <a href="/gift-cards" class="btn-primary" style="margin-top:6px; padding:6px 16px; font-size:0.85rem;">+ Add Money</a>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Quick Pay &amp; Recharge Services</h2>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="alert('Mobile Recharge portal opened! Enter your 10-digit number and select operator.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-mobile-retro"></i></div>
+                    <h3>Mobile Recharge</h3>
+                    <p>Prepaid recharge for Airtel, Jio, Vi, and BSNL with flat ₹50 cashback on eligible plans.</p>
+                    <span class="card-link">Recharge mobile &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Electricity Bill: Select your state power corporation to fetch your bill.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <h3>Electricity Bill</h3>
+                    <p>Instant bill payments for all state boards across India with automated receipt downloads.</p>
+                    <span class="card-link">Pay electricity bill &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('DTH Recharge: Enter your smart card number to recharge Tataplay, DishTV, or Airtel.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                    <h3>DTH Recharge</h3>
+                    <p>Recharge Tata Play, Airtel DTH, Sun Direct, and Dish TV with instant channel activation.</p>
+                    <span class="card-link">Recharge DTH &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Scan & Pay: Camera scanner opened! Scan any UPI QR code.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-qrcode"></i></div>
+                    <h3>Scan any UPI QR</h3>
+                    <p>Pay at grocery shops, restaurants, and retail stores directly with Amazon Pay UPI.</p>
+                    <span class="card-link">Scan QR code &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Amazon Pay ICICI Bank Credit Card</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:25px; align-items:center;">
+                <div style="flex:1; min-width:280px;">
+                    <h3>Lifetime Free Credit Card with Unlimited 5% Cashback</h3>
+                    <ul style="line-height:2; color:#333; margin:15px 0 15px 20px; font-size:0.95rem;">
+                        <li><strong>5% Unlimited Cashback</strong> on Amazon for Prime members</li>
+                        <li><strong>3% Unlimited Cashback</strong> on Amazon for non-Prime members</li>
+                        <li><strong>2% Cashback</strong> on 100+ partner merchants (Swiggy, Uber, BookMyShow)</li>
+                        <li><strong>Zero joining fee, zero annual fee</strong> forever</li>
+                    </ul>
+                    <button class="btn-primary" onclick="alert('Application started! Video KYC completed in 5 minutes.')">
+                        Apply Now - Free
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

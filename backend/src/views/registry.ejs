@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon Registry & Gifting' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Celebrate Life's Moments with Amazon Registry</h1>
+            <p>From weddings and baby showers to birthdays and housewarmings, create a wishlist of everything you love.</p>
+            <div class="feature-search">
+                <input type="text" placeholder="Search by registrant name or event ID...">
+                <button type="button"><i class="fa-solid fa-magnifying-glass"></i> Find Registry</button>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card" onclick="alert('Wedding Registry creator opened! Add home decor, appliances, and honeymoon funds.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-rings-wedding fa-heart"></i></div>
+                <h3>Wedding Registry</h3>
+                <p>Curate your dream home together with millions of items, group gifting, and a 20% completion discount.</p>
+                <span class="card-link">Create wedding registry &rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="alert('Baby Registry creator opened! Free welcome box on eligible purchases.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-baby-carriage"></i></div>
+                <h3>Baby Registry</h3>
+                <p>Everything your newborn needs — strollers, nursery furniture, clothing, and an exclusive baby welcome box.</p>
+                <span class="card-link">Create baby registry &rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="alert('Birthday Wishlist created! Share the link with friends and family.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                <h3>Birthday &amp; Kids Wishlist</h3>
+                <p>Make birthdays extra special. Add toys, games, gadgets, and books tailored for all ages.</p>
+                <span class="card-link">Create birthday list &rarr;</span>
+            </div>
+
+            <div class="feature-card" onclick="alert('Custom Gift List ready! Add items from any Amazon category.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-gift"></i></div>
+                <h3>Custom Gift List</h3>
+                <p>For housewarmings, graduations, anniversaries, or any milestone event worth celebrating.</p>
+                <span class="card-link">Create custom list &rarr;</span>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Why Create a Registry on Amazon?</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-tags"></i></div>
+                    <h4>Up to 20% Discount</h4>
+                    <p>Enjoy a special completion discount on remaining items on your registry.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-box"></i></div>
+                    <h4>Universal Wishlist</h4>
+                    <p>Add items from Amazon and other stores across the web in one single place.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h4>365-Day Returns</h4>
+                    <p>Extended return window on gifts purchased directly from your registry.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-list-check"></i></div>
+                    <h4>Thank You List</h4>
+                    <p>Easily track who sent each gift and when so sending thanks is simple.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

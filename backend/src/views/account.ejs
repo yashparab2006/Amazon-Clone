@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Your Account' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <h1 class="page-title" style="margin-bottom:20px;">Your Account</h1>
+
+        <div class="feature-grid">
+            <a href="/orders" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3>Your Orders</h3>
+                <p>Track packages, return products, review items, or buy again.</p>
+                <span class="card-link">View order history &rarr;</span>
+            </a>
+
+            <a href="/login" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-lock"></i></div>
+                <h3>Login &amp; Security</h3>
+                <p>Edit login name, email address, mobile number, and password.</p>
+                <span class="card-link">Update credentials &rarr;</span>
+            </a>
+
+            <div class="feature-card" onclick="alert('Amazon Prime membership is active! Enjoy free 1-day delivery and Prime Video.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-crown" style="color:#00a8e1;"></i></div>
+                <h3>Prime Membership</h3>
+                <p>Manage subscription, payment settings, and benefits like free 1-day delivery.</p>
+                <span class="card-link">Manage Prime &rarr;</span>
+            </div>
+
+            <a href="/checkout" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h3>Your Addresses</h3>
+                <p>Edit, add, or set default delivery addresses for home and work.</p>
+                <span class="card-link">Manage addresses &rarr;</span>
+            </a>
+
+            <a href="/amazon-pay" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-credit-card"></i></div>
+                <h3>Payment Options</h3>
+                <p>Manage saved credit &amp; debit cards, bank accounts, and Amazon Pay UPI.</p>
+                <span class="card-link">Manage payment methods &rarr;</span>
+            </a>
+
+            <a href="/gift-cards" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-gift"></i></div>
+                <h3>Gift Cards</h3>
+                <p>View Amazon Pay balance, reload funds, or redeem gift card claim codes.</p>
+                <span class="card-link">Manage gift cards &rarr;</span>
+            </a>
+
+            <a href="/customer-service" class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>Customer Service</h3>
+                <p>Browse help topics, contact customer support associates, or request callbacks.</p>
+                <span class="card-link">Get help &rarr;</span>
+            </a>
+
+            <div class="feature-card" onclick="alert('Privacy Center: Download your account data or manage cookie preferences.')">
+                <div class="feature-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Your Data &amp; Privacy</h3>
+                <p>Request account data, manage browsing history, and advertising preferences.</p>
+                <span class="card-link">Privacy settings &rarr;</span>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

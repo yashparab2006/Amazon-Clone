@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon Careers - Come Build With Us' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Find Jobs at Amazon</h1>
+            <p>Come build the future with us. Explore opportunities in software engineering, operations, design, logistics, and more.</p>
+            <div class="feature-search">
+                <input type="text" placeholder="Search by job title, skill, or location (e.g., Software Engineer, Bangalore)...">
+                <button type="button"><i class="fa-solid fa-magnifying-glass"></i> Search Jobs</button>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Explore Teams and Opportunities</h2>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="alert('Software Engineering job openings: 1,240+ roles across Bangalore, Hyderabad, and Chennai.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Software Development</h3>
+                    <p>Build scalable distributed systems powering AWS, Alexa, Amazon.com, and Prime Video.</p>
+                    <span class="card-link">View 1,200+ roles &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Fulfillment & Operations openings: Warehousing, Supply Chain, and Logistics managers.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                    <h3>Operations &amp; Logistics</h3>
+                    <p>Lead transportation networks, fulfillment centers, and robotics teams delivering worldwide.</p>
+                    <span class="card-link">View 850+ roles &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Product & UX Design: Creating intuitive experiences for hundreds of millions of shoppers.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <h3>Product &amp; UX Design</h3>
+                    <p>Design elegant digital and hardware experiences that delight customers globally.</p>
+                    <span class="card-link">View 340+ roles &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Student Programs: Internships & new-grad full-time roles now open for university students.')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Student &amp; Early Careers</h3>
+                    <p>Internships and entry-level positions for university students and recent graduates.</p>
+                    <span class="card-link">Explore campus hiring &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Our Culture &amp; Leadership Principles</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-heart"></i></div>
+                    <h4>Customer Obsession</h4>
+                    <p>Leaders start with the customer and work backward to earn and keep trust.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h4>Invent and Simplify</h4>
+                    <p>Leaders expect and demand innovation from their teams, always finding simpler ways.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>Bias for Action</h4>
+                    <p>Speed matters in business. Many decisions are reversible and do not need extensive study.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-award"></i></div>
+                    <h4>Deliver Results</h4>
+                    <p>Leaders focus on key inputs and deliver results of right quality despite setbacks.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

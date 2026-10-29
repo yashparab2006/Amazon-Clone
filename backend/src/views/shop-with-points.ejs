@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Shop with Points - Amazon' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Shop with Points on Amazon</h1>
+            <p>Turn your credit card reward points and cashback into everyday purchases. Link your eligible cards and redeem points instantly at checkout.</p>
+        </div>
+
+        <section class="feature-section">
+            <h2>Supported Partner Banks &amp; Loyalty Programs</h2>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="alert('HDFC Rewards linked! Available: 4,800 points (~₹1,200).')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <h3>HDFC Bank Reward Points</h3>
+                    <p>Redeem Regalia, Infinia, and Millennia credit card reward points directly on your cart.</p>
+                    <span class="card-link">Link HDFC card &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('SBI Card Points linked! Available: 3,250 points (~₹812).')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3>SBI Card Reward Points</h3>
+                    <p>Use SBI SimplyCLICK and Elite reward points on millions of products with zero redemption fee.</p>
+                    <span class="card-link">Link SBI card &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('ICICI Bank Rewards linked! Available: 5,600 points (~₹1,400).')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-coins"></i></div>
+                    <h3>ICICI Bank Reward Points</h3>
+                    <p>Redeem Handpicked rewards on electronics, apparel, and grocery items during checkout.</p>
+                    <span class="card-link">Link ICICI card &rarr;</span>
+                </div>
+
+                <div class="feature-card" onclick="alert('Axis Bank EDGE Rewards linked! Available: 2,100 points (~₹525).')">
+                    <div class="feature-card-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Axis Bank EDGE Rewards</h3>
+                    <p>Convert your EDGE reward points into instant rupee discounts on your orders.</p>
+                    <span class="card-link">Link Axis card &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>How It Works in 3 Easy Steps</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <h4>Link Your Card</h4>
+                    <p>Enroll your eligible credit or debit card once to check your live points balance.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <h4>Shop as Usual</h4>
+                    <p>Add your favorite products from any category to your shopping cart.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <h4>Apply Points at Checkout</h4>
+                    <p>Select your points balance at the payment screen to reduce your order total.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

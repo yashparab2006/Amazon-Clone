@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: product.name }) %>
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="breadcrumb">
+            <a href="/">Home</a> &rsaquo;
+            <a href="/?category=<%= encodeURIComponent(product.category) %>"><%= product.category %></a>
+            &rsaquo; <span><%= product.name %></span>
+        </div>
+
+        <section class="product-detail" id="productDetail">
+            <%
+                const discount = product.originalPrice > product.price
+                    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+                    : 0;
+            %>
+            <div class="product-detail-image">
+                <img src="/<%= product.image %>" alt="<%= product.name %>">
+            </div>
+
+            <div class="product-detail-info">
+                <p class="product-brand"><%= product.brand %></p>
+                <h1 class="product-detail-title"><%= product.name %></h1>
+                <p class="product-rating">
+                    <span class="stars"><%= stars(product.rating) %></span>
+                    <span>(<%= formatNum(product.reviews) %> reviews)</span>
+                </p>
+                <hr>
+                <div class="product-detail-price">
+                    <span class="product-price">₹<%= product.price.toLocaleString('en-IN') %></span>
+                    <% if (discount > 0) { %>
+                        <span class="original-price">₹<%= product.originalPrice.toLocaleString('en-IN') %></span>
+                        <span class="discount-badge"><%= discount %>% off</span>
+                    <% } %>
+                </div>
+                <p class="product-detail-desc"><%= product.description %></p>
+                <p class="product-stock <%= product.stock > 0 ? 'in-stock' : 'out-stock' %>">
+                    <%= product.stock > 0 ? 'In Stock (' + product.stock + ' left)' : 'Out of Stock' %>
+                </p>
+                <% if (product.stock > 0) { %>
+                    <button class="btn-primary add-to-cart-btn" data-id="<%= product.id %>"
+                            onclick="addToCart(<%= product.id %>)">
+                        Add to Cart
+                    </button>
+                    <button class="btn-secondary" onclick="addToCart(<%= product.id %>); window.location.href='/cart'">
+                        Buy Now
+                    </button>
+                <% } %>
+            </div>
+        </section>
+
+        <% if (related.length > 0) { %>
+        <section class="related-section">
+            <h2>Related Products</h2>
+            <div class="related-grid" id="relatedGrid">
+                <% related.forEach(function(p) {
+                    const relDiscount = p.originalPrice > p.price
+                        ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100)
+                        : 0;
+                %>
+                <div class="box" onclick="window.location.href='/product/<%= p.id %>'">
+                    <div class="box-content">
+                        <h2><%= p.name %></h2>
+                        <div class="box-img" style="background-image: url('/<%= p.image %>');"></div>
+                        <div class="product-price-section">
+                            <p class="product-price">₹<%= p.price.toLocaleString('en-IN') %></p>
+                            <% if (relDiscount > 0) { %>
+                                <span class="original-price">₹<%= p.originalPrice.toLocaleString('en-IN') %></span>
+                                <span class="discount-badge"><%= relDiscount %>% off</span>
+                            <% } %>
+                        </div>
+                        <p class="product-rating">
+                            <span class="stars"><%= stars(p.rating) %></span>
+                            <span>(<%= formatNum(p.reviews) %>)</span>
+                        </p>
+                        <button class="add-to-cart-btn" data-id="<%= p.id %>"
+                                onclick="event.stopPropagation(); addToCart(<%= p.id %>)">Add to Cart</button>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+    <script src="/js/product-detail.js"></script>
+</body>
+</html>
+

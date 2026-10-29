@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main>
+        <section class="hero-section" id="heroSection">
+            <div class="hero-msg">
+                <p>You are on amazon.com. You can also shop on Amazon India for millions of products with faster local delivery.
+                   <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer">Click here to go to amazon.in</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="shop-section" id="shopSection">
+            <% if (products.length === 0) { %>
+                <p class="no-results show" id="noResults">No products found. Try a different search.</p>
+            <% } else { %>
+                <p class="no-results" id="noResults" style="display:none;">No products found. Try a different search.</p>
+                <% products.forEach(function(product) {
+                    const discount = product.originalPrice > product.price
+                        ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+                        : 0;
+                %>
+                <div class="box" data-id="<%= product.id %>" data-product="<%= product.name %>"
+                     data-category="<%= product.category %>" <%= product.deals ? 'data-deals="true"' : '' %>
+                     onclick="window.location.href='/product/<%= product.id %>'">
+                    <div class="box-content">
+                        <h2><%= product.name %></h2>
+                        <div class="box-img" style="background-image: url('/<%= product.image %>');"></div>
+                        <div class="product-price-section">
+                            <p class="product-price">₹<%= product.price.toLocaleString('en-IN') %></p>
+                            <% if (discount > 0) { %>
+                                <span class="original-price">₹<%= product.originalPrice.toLocaleString('en-IN') %></span>
+                                <span class="discount-badge"><%= discount %>% off</span>
+                            <% } %>
+                        </div>
+                        <p class="product-rating">
+                            <span class="stars"><%= stars(product.rating) %></span>
+                            <span>(<%= formatNum(product.reviews) %>)</span>
+                        </p>
+                        <p class="see-more">See more</p>
+                        <button class="add-to-cart-btn" data-id="<%= product.id %>"
+                                onclick="event.stopPropagation(); addToCart(<%= product.id %>)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <% }); %>
+            <% } %>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+    <script src="/js/home.js"></script>
+</body>
+</html>
+

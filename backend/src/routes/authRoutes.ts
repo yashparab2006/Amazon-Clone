@@ -1,13 +1,10 @@
 import { Router } from 'express';
-import { AuthController } from '../controllers/authController';
-import { authenticate } from '../middleware/auth';
+import * as auth from '../controllers/authControllerWeb';
 
 const router = Router();
 
-router.post('/register', AuthController.register);
-router.post('/login', AuthController.login);
-router.get('/profile', authenticate, AuthController.getProfile);
-router.put('/profile', authenticate, AuthController.updateProfile);
-router.post('/logout', authenticate, AuthController.logout);
+router.post('/login', auth.loginPost);
+router.post('/register', auth.registerPost);
+router.get('/logout', auth.logout);
 
 export default router;

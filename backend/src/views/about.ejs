@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'About Amazon' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>About Amazon</h1>
+            <p>Guided by four core principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking.</p>
+        </div>
+
+        <section class="feature-section">
+            <h2>Who We Are</h2>
+            <p style="font-size:1.05rem; line-height:1.7; color:#333; margin-bottom:20px;">
+                Amazon is a company of builders who bring varying backgrounds, ideas, and points of view to inventing on behalf of our customers.
+                From revolutionizing online shopping and package delivery to cloud computing with AWS and smart voice control with Alexa,
+                we work tirelessly every day to make customers’ lives easier and better.
+            </p>
+        </section>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3>The Climate Pledge</h3>
+                <p>Committed to reaching net-zero carbon emissions across our businesses by 2040, 10 years ahead of the Paris Agreement.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>Supporting Local Businesses</h3>
+                <p>Empowering over 14 lakh Indian small and medium sellers, artisans, and women entrepreneurs to reach global shoppers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-robot"></i></div>
+                <h3>Innovation &amp; Technology</h3>
+                <p>Pioneering automated fulfillment robotics, AI computer vision, delivery drones, and clean energy data centers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <h3>Community Impact</h3>
+                <p>Amazon Future Engineer programs bringing computer science education to underserved students across India.</p>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>Amazon by the Numbers</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-store"></i></div>
+                    <h4>300M+</h4>
+                    <p>Active customer accounts worldwide</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-truck"></i></div>
+                    <h4>100%</h4>
+                    <p>Serviceable pincodes delivered across India</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-briefcase"></i></div>
+                    <h4>1.5M+</h4>
+                    <p>Employees building the future globally</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num"><i class="fa-solid fa-sun"></i></div>
+                    <h4>100%</h4>
+                    <p>Renewable energy powering operations by 2025</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

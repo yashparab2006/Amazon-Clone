@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Sign In' }) %>
+</head>
+<body class="auth-body">
+
+    <div class="auth-header">
+        <a href="/"><div class="logo auth-logo"></div></a>
+    </div>
+
+    <main class="auth-main">
+        <div class="auth-box">
+            <h1>Sign in</h1>
+
+            <% if (locals.error) { %>
+                <p class="auth-error"><%= error %></p>
+            <% } %>
+            <% if (locals.success) { %>
+                <p class="auth-success" style="color:green; font-size:0.9rem; margin-bottom:8px;"><%= success %></p>
+            <% } %>
+
+            <form id="loginForm" action="/auth/login" method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email"
+                       value="<%= locals.formData ? formData.email : '' %>">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+                <button type="submit" class="btn-auth">Sign in</button>
+            </form>
+            <hr>
+            <p class="auth-switch">New to Amazon? <a href="/register">Create your Amazon account</a></p>
+        </div>
+    </main>
+
+    <footer class="auth-footer">
+        <a href="#">Conditions of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Help</a>
+        <p>&copy; 1996-2023, Amazon.com, Inc. or its affiliates</p>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Amazon Associates - Affiliate Program' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Recommend Products. Earn Commissions.</h1>
+            <p>Welcome to one of the largest affiliate marketing programs in the world. Help content creators, publishers, and bloggers monetize their traffic.</p>
+            <button class="btn-primary" onclick="alert('Welcome to Amazon Associates! Your affiliate tracking ID has been created: amz-partner-21')"
+                    style="font-size:1.05rem; padding:12px 28px; background:linear-gradient(to bottom, #ffd814, #f7ca00);">
+                Sign Up as an Affiliate
+            </button>
+        </div>
+
+        <section class="feature-section">
+            <h2>How the Amazon Associates Program Works</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <h4>Sign Up</h4>
+                    <p>Join thousands of creators and publishers in minutes with instant account approval.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <h4>Recommend</h4>
+                    <p>Share millions of products on your blog, YouTube channel, Instagram, or website with customized affiliate links.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <h4>Earn</h4>
+                    <p>Earn up to 10% in associate commissions from qualifying purchases and programs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <h2>Commission Rates by Category</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <h3>Fashion &amp; Apparel</h3>
+                    <p>Earn up to <strong>9% to 10%</strong> commission on clothing, shoes, watches, and designer luggage.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-laptop"></i></div>
+                    <h3>Electronics &amp; Gadgets</h3>
+                    <p>Earn up to <strong>4% to 5%</strong> commission on headphones, smart speakers, laptops, and mobiles.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-couch"></i></div>
+                    <h3>Home &amp; Kitchen</h3>
+                    <p>Earn up to <strong>8% to 9%</strong> commission on furniture, kitchenware, bedding, and decor.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Books &amp; Media</h3>
+                    <p>Earn up to <strong>5% to 6%</strong> on physical books, educational supplies, and digital content.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

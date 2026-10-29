@@ -32,7 +32,7 @@ export function generateToken(user: { id: number; email: string; name: string; i
       isAdmin: user.isAdmin
     },
     JWT_SECRET,
-    { expiresIn: JWT_EXPIRES_IN }
+    { expiresIn: JWT_EXPIRES_IN } as jwt.SignOptions
   );
 }
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Your Orders' }) %>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+    <%- include('partials/navbar') %>
+
+    <main class="page-main">
+        <h1 class="page-title" style="margin-bottom:15px;">Your Orders</h1>
+
+        <div style="display:flex; gap:20px; border-bottom:1px solid #d5d9d9; margin-bottom:25px;">
+            <span style="padding:10px 0; font-weight:700; border-bottom:3px solid #e47911; color:#0f1111; cursor:pointer;">Orders</span>
+            <span style="padding:10px 0; color:#007185; cursor:pointer;" onclick="alert('No pending shipments.')">Buy Again</span>
+            <span style="padding:10px 0; color:#007185; cursor:pointer;" onclick="alert('All recent orders are delivered.')">Not Yet Shipped</span>
+            <span style="padding:10px 0; color:#007185; cursor:pointer;" onclick="alert('No cancelled orders.')">Cancelled Orders</span>
+        </div>
+
+        <!-- Sample recent orders list -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="background:white; border:1px solid #d5d9d9; border-radius:8px; overflow:hidden;">
+                <div style="background:#f0f2f2; padding:14px 20px; display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.85rem; color:#565959; gap:15px;">
+                    <div>
+                        <span>ORDER PLACED</span><br>
+                        <strong style="color:#0f1111;">28 October 2026</strong>
+                    </div>
+                    <div>
+                        <span>TOTAL</span><br>
+                        <strong style="color:#0f1111;">₹2,499.00</strong>
+                    </div>
+                    <div>
+                        <span>SHIP TO</span><br>
+                        <strong style="color:#0f1111;"><%= user ? user.name : 'Customer' %></strong>
+                    </div>
+                    <div style="text-align:right;">
+                        <span>ORDER # 408-9123841-7654321</span><br>
+                        <a href="#" style="color:#007185;" onclick="alert('Invoice downloaded for Order #408-9123841')">Invoice &darr;</a>
+                    </div>
+                </div>
+
+                <div style="padding:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; align-items:center;">
+                    <div style="display:flex; gap:20px; align-items:center;">
+                        <img src="/box9_image.jpg" alt="Headphones" style="width:90px; height:90px; object-fit:cover; border-radius:4px; border:1px solid #eee;">
+                        <div>
+                            <span style="color:#007600; font-weight:700; font-size:1.05rem;">Delivered Yesterday</span><br>
+                            <p style="font-weight:600; margin:6px 0; color:#0f1111;">Wireless Bluetooth Headphones (Noise Cancelling)</p>
+                            <span style="font-size:0.85rem; color:#565959;">Return window closed on 28 Nov 2026</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <button class="btn-primary" onclick="alert('Item added back to your cart!')" style="margin:0; padding:8px 18px; font-size:0.85rem;">
+                            Buy it again
+                        </button>
+                        <button class="btn-secondary" onclick="alert('Tracking status: Package delivered to front door.')" style="padding:8px 18px; font-size:0.85rem; cursor:pointer;">
+                            Track package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background:white; border:1px solid #d5d9d9; border-radius:8px; overflow:hidden;">
+                <div style="background:#f0f2f2; padding:14px 20px; display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.85rem; color:#565959; gap:15px;">
+                    <div>
+                        <span>ORDER PLACED</span><br>
+                        <strong style="color:#0f1111;">15 October 2026</strong>
+                    </div>
+                    <div>
+                        <span>TOTAL</span><br>
+                        <strong style="color:#0f1111;">₹1,999.00</strong>
+                    </div>
+                    <div>
+                        <span>SHIP TO</span><br>
+                        <strong style="color:#0f1111;"><%= user ? user.name : 'Customer' %></strong>
+                    </div>
+                    <div style="text-align:right;">
+                        <span>ORDER # 408-5421980-3342110</span><br>
+                        <a href="#" style="color:#007185;" onclick="alert('Invoice downloaded for Order #408-5421980')">Invoice &darr;</a>
+                    </div>
+                </div>
+
+                <div style="padding:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; align-items:center;">
+                    <div style="display:flex; gap:20px; align-items:center;">
+                        <img src="/box10_image.jpg" alt="Fitness Tracker" style="width:90px; height:90px; object-fit:cover; border-radius:4px; border:1px solid #eee;">
+                        <div>
+                            <span style="color:#007600; font-weight:700; font-size:1.05rem;">Delivered 18 Oct 2026</span><br>
+                            <p style="font-weight:600; margin:6px 0; color:#0f1111;">Fitness Tracker Watch with Heart Rate &amp; Sleep Monitor</p>
+                            <span style="font-size:0.85rem; color:#565959;">Standard delivery fulfilled by Amazon</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <button class="btn-primary" onclick="alert('Item added back to your cart!')" style="margin:0; padding:8px 18px; font-size:0.85rem;">
+                            Buy it again
+                        </button>
+                        <button class="btn-secondary" onclick="alert('Product review window opened!')" style="padding:8px 18px; font-size:0.85rem; cursor:pointer;">
+                            Write a product review
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/common.js"></script>
+</body>
+</html>
+

@@ -63,7 +63,7 @@ export class OrderController {
       }
 
       const { orderId } = req.params;
-      const order = await OrderService.getOrderById(orderId);
+      const order = await OrderService.getOrderById(orderId as string);
 
       if (!order) {
         res.status(404).json({ error: 'Order not found' });
@@ -112,7 +112,7 @@ export class OrderController {
         return;
       }
 
-      const updatedOrder = await OrderService.updateOrderStatus(orderId, status);
+      const updatedOrder = await OrderService.updateOrderStatus(orderId as string, status);
 
       if (!updatedOrder) {
         res.status(404).json({ error: 'Order not found' });
