@@ -1,3 +1,48 @@
+function appNavigate(target) {
+    const isNodeServer = window.location.port === '5000';
+    if (isNodeServer) {
+        window.location.href = target;
+        return;
+    }
+    if (target.startsWith('/product/')) {
+        const id = target.replace('/product/', '');
+        window.location.href = 'product-detail.html?id=' + id;
+        return;
+    }
+    const map = {
+        '/': 'index.html',
+        '/cart': 'cart.html',
+        '/checkout': 'checkout.html',
+        '/login': 'login.html',
+        '/register': 'register.html',
+        '/auth/logout': 'login.html',
+        '/customer-service': 'customer-service.html',
+        '/registry': 'registry.html',
+        '/gift-cards': 'gift-cards.html',
+        '/sell': 'sell.html',
+        '/careers': 'careers.html',
+        '/about': 'about.html',
+        '/affiliate': 'affiliate.html',
+        '/amazon-pay': 'amazon-pay.html',
+        '/shop-with-points': 'shop-with-points.html',
+        '/account': 'account.html',
+        '/orders': 'orders.html',
+        '/help': 'customer-service.html'
+    };
+    if (map[target]) {
+        window.location.href = map[target];
+        return;
+    }
+    if (target.startsWith('/?category=')) {
+        window.location.href = 'index.html' + target.substring(1);
+        return;
+    }
+    if (target.startsWith('/login?')) {
+        window.location.href = 'login.html' + target.substring(6);
+        return;
+    }
+    window.location.href = target;
+}
 const AmazonStore = {
     getCart() {
         try {
@@ -213,14 +258,14 @@ const AmazonStore = {
         const logoBtn = document.getElementById("logoBtn");
         if (logoBtn) {
             logoBtn.addEventListener("click", () => {
-                window.location.href = "index.html";
+                appNavigate("/");
             });
         }
 
         const cartBtn = document.getElementById("cartBtn");
         if (cartBtn) {
             cartBtn.addEventListener("click", () => {
-                window.location.href = "cart.html";
+                appNavigate("/cart");
             });
         }
 
@@ -229,10 +274,10 @@ const AmazonStore = {
             signinBtn.addEventListener("click", () => {
                 if (AmazonStore.getUser()) {
                     if (confirm("Do you want to sign out?")) {
-                        AmazonStore.logout();
+                        appNavigate("/auth/logout");
                     }
                 } else {
-                    window.location.href = "login.html";
+                    appNavigate("/login");
                 }
             });
         }
@@ -251,12 +296,7 @@ const AmazonStore = {
         const ordersBtn = document.getElementById("ordersBtn");
         if (ordersBtn) {
             ordersBtn.addEventListener("click", () => {
-                if (AmazonStore.getUser()) {
-                    // Navigate to orders page (to be implemented)
-                    showToast("Orders feature coming soon!");
-                } else {
-                    window.location.href = "login.html?redirect=orders.html";
-                }
+                appNavigate("/orders");
             });
         }
 
@@ -294,7 +334,7 @@ const AmazonStore = {
             link.addEventListener("click", (e) => {
                 e.preventDefault();
                 const cat = link.dataset.category;
-                window.location.href = `index.html?category=${encodeURIComponent(cat)}`;
+                appNavigate(`/?category=${encodeURIComponent(cat)}`);
             });
         });
 
@@ -302,7 +342,7 @@ const AmazonStore = {
         if (signInLink) {
             signInLink.addEventListener("click", (e) => {
                 e.preventDefault();
-                window.location.href = "login.html";
+                appNavigate("/login");
             });
         }
     }
@@ -365,7 +405,7 @@ function createProductCard(product) {
 
     box.addEventListener("click", (e) => {
         if (e.target.classList.contains("add-to-cart-btn")) return;
-        window.location.href = `product-detail.html?id=${product.id}`;
+        appNavigate(`/product/${product.id}`);
     });
 
     box.querySelector(".add-to-cart-btn").addEventListener("click", (e) => {
@@ -375,3 +415,10 @@ function createProductCard(product) {
 
     return box;
 }
+
+
+// Global helper called by EJS inline onclick handlers
+function addToCart(productId) {
+    AmazonStore.addToCart(productId);
+}
+

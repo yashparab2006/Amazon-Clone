@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell on Amazon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="amazon_logo.png">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="nav-logo border" id="logoBtn"><div class="logo"></div></div>
+            <div class="nav-address border" id="locationBtn">
+                <p class="add-first">Deliver to</p>
+                <div class="add-icon"><i class="fa-solid fa-location-dot"></i><p class="add-sec">India</p></div>
+            </div>
+            <div class="nav-search" id="searchBar">
+                <select class="search-select" id="searchCategory"></select>
+                <input type="text" placeholder="Search Amazon" class="search-input" id="searchInput">
+                <button type="button" class="search-icon" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="nav-signin border" id="signinBtn">
+                <p><span>Hello, sign in</span></p>
+                <p class="nav-second">Account &amp; Lists</p>
+            </div>
+            <div class="nav-return border" id="ordersBtn">
+                <p><span>Returns</span></p>
+                <p class="nav-second">&amp; Orders</p>
+            </div>
+            <div class="nav-cart border" id="cartBtn">
+                <div class="cart-icon-wrap">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <span class="cart-label">Cart</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-all border" id="panelAll"><i class="fa-solid fa-bars"></i> All</div>
+            <div class="panel-ops">
+                <a href="index.html" class="panel-link">Today's Deals</a>
+                <a href="customer-service.html" class="panel-link">Customer Service</a>
+                <a href="registry.html" class="panel-link">Registry</a>
+                <a href="gift-cards.html" class="panel-link">Gift Cards</a>
+                <a href="sell.html" class="panel-link" style="color:#febd69;">Sell</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="feature-hero">
+            <h1>Sell on Amazon — Grow Your Business</h1>
+            <p>Reach over 10 crore customers across India and globally. Start selling in minutes with easy onboarding and dedicated support.</p>
+            <button class="btn-primary" onclick="alert('Seller Registration portal opened! Have your GSTIN and bank details ready.')"
+                    style="font-size:1.05rem; padding:12px 28px; background:linear-gradient(to bottom, #f0c14b, #e47911); color:white;">
+                Start Selling Today
+            </button>
+        </div>
+
+        <section class="feature-section">
+            <h2>How Selling on Amazon Works</h2>
+            <div class="step-grid">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <h4>Register &amp; List</h4>
+                    <p>Create your seller account with GST/PAN and list your catalog using easy bulk upload tools.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <h4>Orders Arrive</h4>
+                    <p>Customers find and purchase your products on Amazon across India and worldwide.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <h4>Fulfillment &amp; Delivery</h4>
+                    <p>Store in Amazon warehouses with FBA (Fulfillment by Amazon) or ship directly to buyers.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <h4>Receive Fast Payments</h4>
+                    <p>Funds are deposited directly into your bank account every 7 days, including for cash-on-delivery.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>10+ Crore Shoppers</h3>
+                <p>Access the largest customer base across India with instant product visibility.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3>Fulfillment by Amazon (FBA)</h3>
+                <p>Amazon stores, picks, packs, and delivers your products with Prime 1-day delivery.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>Export to Global Markets</h3>
+                <p>Sell to over 200 countries through Amazon Global Selling from your home city.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>24/7 Seller Support</h3>
+                <p>Dedicated merchant support in Hindi, English, Tamil, Telugu, and other regional languages.</p>
+            </div>
+        </div>
+
+        <section class="feature-section">
+            <h2>What You Need to Get Started</h2>
+            <ul style="line-height:2; color:#333; margin-left:20px; font-size:0.95rem;">
+                <li><strong>Bank Account Details:</strong> For timely 7-day payouts</li>
+                <li><strong>Tax Information:</strong> GSTIN and PAN details</li>
+                <li><strong>Active Mobile Number &amp; Email:</strong> For account verification and order notifications</li>
+                <li><strong>At least 1 product to sell:</strong> In any supported retail or handmade category</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="foot-panel1" id="backToTop">Back to Top</div>
+        <div class="foot-panel4">
+            <div class="copyright">&copy; 1996-2023, Amazon.com, Inc. or its affiliates</div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AmazonStore.initNavbar();
+            populateSearchCategories(document.getElementById('searchCategory'));
+        });
+    </script>
+</body>
+</html>
+

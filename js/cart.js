@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 : "";
 
             row.innerHTML = `
-                <a href="product-detail.html?id=${item.id}" class="cart-item-img" style="background-image:url('${item.image}');"></a>
+                <a href="/product/${item.id}" class="cart-item-img" style="background-image:url('${item.image}');"></a>
                 <div class="cart-item-info">
-                    <a href="product-detail.html?id=${item.id}" class="cart-item-name">${item.name}</a>
+                    <a href="/product/${item.id}" class="cart-item-name">${item.name}</a>
                     <div class="cart-item-price-section">
                         <p class="cart-item-price">${formatPrice(item.price)}</p>
                         ${originalPriceHTML}
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         if (!AmazonStore.getUser()) {
-            window.location.href = "login.html?redirect=checkout.html";
+            appNavigate("/login?redirect=checkout");
             return;
         }
 
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             checkoutBtn.classList.remove("btn-loading");
             checkoutBtn.textContent = "Proceed to Checkout";
-            window.location.href = "checkout.html";
+            appNavigate("/checkout");
         }, 500);
     });
 
